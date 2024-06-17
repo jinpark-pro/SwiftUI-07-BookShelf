@@ -14,6 +14,7 @@ private class BooksViewModel: ObservableObject {
     @MainActor
     func fetchData() async {
         fetching = true
+        books.removeAll()
         // set 2 seconds to delay
         do {
             try await Task.sleep(for: .seconds(2))
@@ -31,6 +32,9 @@ struct BookListView: View {
     var body: some View {
         List(viewModel.books) { book in
             BookRowView(book: book)
+        }
+        .refreshable {
+            await viewModel.fetchData()
         }
         .overlay {
             if viewModel.fetching {
