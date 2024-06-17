@@ -6,11 +6,28 @@
 //
 
 import SwiftUI
+import Combine
 
+private extension String {
+    func matches(_ searchTerm: String) -> Bool {
+        self.range(of: searchTerm, options: .caseInsensitive) != nil
+    }
+}
 private class BooksViewModel: ObservableObject {
     @Published var books: [Book] = [Book]()
     @Published var fetching = false
+    @Published var searchTerm: String = ""
     
+    @Published var filteredBooks: [Book] = [Book]()
+
+    init() {
+        Publishers.CombineLatest($books, $searchTerm).map { books, searchTerm in
+            books.filter { book in
+                searchTerm.isEmpty ? true : (book.title.matches(searchTerm) || book.author.matches(searchTerm))
+            }
+        }
+        .assign(to: &$filteredBooks)
+    }
     @MainActor
     func fetchData() async {
         fetching = true
@@ -30,9 +47,11 @@ struct BookListView: View {
     @StateObject fileprivate var viewModel = BooksViewModel()
     
     var body: some View {
-        List(viewModel.books) { book in
+        List(viewModel.filteredBooks) { book in
             BookRowView(book: book)
         }
+        .searchable(text: $viewModel.searchTerm)
+        .autocapitalization(.none)
         .refreshable {
             await viewModel.fetchData()
         }
