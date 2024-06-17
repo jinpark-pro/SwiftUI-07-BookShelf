@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct Book {
+struct Book: Hashable, Identifiable {
+    var id = UUID()
     var title: String
     var author: String
     var isbn: String
     var pages: Int
+    var isRead: Bool = false
 }
 
 extension Book {

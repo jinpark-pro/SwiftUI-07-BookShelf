@@ -16,7 +16,7 @@ struct BookRowView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 90)
             VStack(alignment: .leading) {
-                Text("Asynchronous Programming with SwiftUI and Combine")
+                Text(book.title)
                     .font(.headline)
                 Text("by \(book.author)")
                     .font(.subheadline)
