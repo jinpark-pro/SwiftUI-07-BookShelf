@@ -69,7 +69,9 @@ struct BookListView: View {
 }
 
 #Preview {
-    BookListView()
+    NavigationStack {
+        BookListView()
+    }
 }
 
 //#Preview(traits: .sizeThatFitsLayout) {
