@@ -47,23 +47,28 @@ struct BookListView: View {
     @StateObject fileprivate var viewModel = BooksViewModel()
     
     var body: some View {
-        List(viewModel.filteredBooks) { book in
-            BookRowView(book: book)
-        }
-        .searchable(text: $viewModel.searchTerm)
-        .autocapitalization(.none)
-        .refreshable {
-            await viewModel.fetchData()
-        }
-        .overlay {
-            if viewModel.fetching {
-                ProgressView("Fetching data, please wait ...")
-                    .progressViewStyle(CircularProgressViewStyle())
+        NavigationStack {
+            List($viewModel.filteredBooks) { $book in
+                NavigationLink(destination: BookDetailView(book: $book)) {
+                    BookRowView(book: book)
+                }
             }
-        }
-        .animation(.default, value: viewModel.books)
-        .task {
-            await viewModel.fetchData()
+            .searchable(text: $viewModel.searchTerm)
+            .autocapitalization(.none)
+            .refreshable {
+                await viewModel.fetchData()
+            }
+            .overlay {
+                if viewModel.fetching {
+                    ProgressView("Fetching data, please wait ...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
+            }
+            .animation(.default, value: viewModel.books)
+            .task {
+                await viewModel.fetchData()
+            }
+            .navigationTitle("Books")
         }
     }
 }
