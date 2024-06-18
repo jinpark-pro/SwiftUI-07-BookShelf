@@ -19,16 +19,19 @@ struct BookDetailView: View {
                 .scaledToFit()
                 .shadow(radius: 10)
                 .padding()
+            Button(action: { showEditBookView.toggle() }) {
+                Label("Edit", systemImage: "pencil")
+            }
             Label(book.author, systemImage: "person.crop.rectangle")
             Label("ISBN: \(book.isbn)", systemImage: "number")
             Label("\(book.pages) pages", systemImage: "book")
             // toggle 로 값을 바꾸지 않기 위해서 .constant 사용
             Toggle("Read", isOn: .constant(book.isRead))
-            Button(action: { showEditBookView.toggle() }) {
-                Label("Edit", systemImage: "pencil")
-            }
         }
         .navigationTitle(book.title)
+        .sheet(isPresented: $showEditBookView) {
+            BookEditView(book: $book)
+        }
     }
 }
 

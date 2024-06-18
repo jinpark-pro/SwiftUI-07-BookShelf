@@ -14,6 +14,7 @@
 		3CA9B4882C1FC4BB009FABE2 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9B4872C1FC4BB009FABE2 /* Book.swift */; };
 		3CA9B48A2C1FD2CA009FABE2 /* BookRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9B4892C1FD2CA009FABE2 /* BookRowView.swift */; };
 		3CA9B4CC2C202AC6009FABE2 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9B4CB2C202AC6009FABE2 /* BookDetailView.swift */; };
+		3CA9B4CE2C2108F3009FABE2 /* BookEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9B4CD2C2108F3009FABE2 /* BookEditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		3CA9B4872C1FC4BB009FABE2 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		3CA9B4892C1FD2CA009FABE2 /* BookRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRowView.swift; sourceTree = "<group>"; };
 		3CA9B4CB2C202AC6009FABE2 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		3CA9B4CD2C2108F3009FABE2 /* BookEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				3CA9B47A2C1FC435009FABE2 /* BookListView.swift */,
 				3CA9B4892C1FD2CA009FABE2 /* BookRowView.swift */,
 				3CA9B4CB2C202AC6009FABE2 /* BookDetailView.swift */,
+				3CA9B4CD2C2108F3009FABE2 /* BookEditView.swift */,
 				3CA9B47C2C1FC436009FABE2 /* Assets.xcassets */,
 				3CA9B47E2C1FC436009FABE2 /* Preview Content */,
 			);
@@ -159,6 +162,7 @@
 				3CA9B4CC2C202AC6009FABE2 /* BookDetailView.swift in Sources */,
 				3CA9B48A2C1FD2CA009FABE2 /* BookRowView.swift in Sources */,
 				3CA9B4882C1FC4BB009FABE2 /* Book.swift in Sources */,
+				3CA9B4CE2C2108F3009FABE2 /* BookEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
